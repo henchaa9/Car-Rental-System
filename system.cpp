@@ -4,46 +4,49 @@
 
 #include "system.h"
 
-System::System() : cars(0), carCount(0)
+System::System() : cars(1), carCount(0)
 {
 }
 
 void System::addCar(int year, std::string make, std::string model, int km)
 {
     Car newCar(year, make, model, km);
-    cars.push_back(newCar);
+    cars.insert(cars.begin() + carCount, newCar);
     carCount++;
 }
 
-void System::deleteCar(int year, std::string make, std::string model, int km)
+void System::deleteCar(int index)
 {
-    std::string target = std::to_string(year) + make + model + std::to_string(km);
-
     int size = cars.size();
 
-    for (int x = 0; x < size; x++)
+    if (index <= size)
     {
-        if (cars[x].findCar() == target)
-        {
-            cars.erase(cars.begin() + x);
-            break;
-        }
-        else
-        {
-            std::cout << "No such car" << std::endl;
-        }
+        std::vector<Car>::iterator it;
+        it = cars.begin() + index;
+        cars.erase(it);
+        carCount--;
     }
-
-    carCount--;
+    else
+    {
+        std::cout << "No such car!" << std::endl;
+    }
 }
 
 void System::showAllCars()
 {
     int size = cars.size();
 
-    for (int x = 0; x < size; x++)
+    if (size > 1)
     {
-        cars[x].showInfo();
+        for (int x = 1; x < size; x++)
+        {
+            std::cout << x << ". ";
+            cars[x].showInfo();
+        }
+    }
+    else
+    {
+        std::cout << "No cars in the system!" << std::endl;
     }
 
     std::cout << "Total cars: " << carCount << std::endl;

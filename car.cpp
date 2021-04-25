@@ -5,10 +5,6 @@
 
 
 Car::Car()
-    : m_year(1800),
-      m_make("honda"),
-      m_model("civic"),
-      m_km(69420)
 {}
 
 Car::Car(int year, std::string make, std::string model, int km)

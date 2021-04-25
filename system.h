@@ -15,6 +15,6 @@ class System
         System();
 
         void addCar(int year, std::string make, std::string model, int km);
-        void deleteCar(int year, std::string make, std::string model, int km);
+        void deleteCar(int index);
         void showAllCars();
 };
