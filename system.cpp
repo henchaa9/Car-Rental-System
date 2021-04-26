@@ -10,25 +10,25 @@ System::System() : cars(1), carCount(0)
 
 void System::addCar(int year, std::string make, std::string model, int km)
 {
+    carCount++;
     Car newCar(year, make, model, km);
     cars.insert(cars.begin() + carCount, newCar);
-    carCount++;
 }
 
 void System::deleteCar(int index)
 {
     int size = cars.size();
 
-    if (index <= size)
+    if ((index >= size) || (index == 0))
+    {
+        std::cout << "No such car!" << std::endl;
+    }
+    else
     {
         std::vector<Car>::iterator it;
         it = cars.begin() + index;
         cars.erase(it);
         carCount--;
-    }
-    else
-    {
-        std::cout << "No such car!" << std::endl;
     }
 }
 
