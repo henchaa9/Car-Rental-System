@@ -17,4 +17,6 @@ class System
         void addCar(int year, std::string make, std::string model, int km);
         void deleteCar(int index);
         void showAllCars();
+        void rentCar(int carIndex, int days);
+        void carInfo(int carIndex);
 };

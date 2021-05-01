@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <ctime>
 
 #include "system.h"
 
@@ -49,5 +50,20 @@ void System::showAllCars()
         std::cout << "No cars in the system!" << std::endl;
     }
 
-    std::cout << "Total cars: " << carCount << std::endl;
+    std::cout << "Total cars: " << carCount << "\n" << std::endl;
+}
+
+void System::rentCar(int carIndex, int days)
+{
+    cars[carIndex].setStatus(2);
+
+    time_t currentTime = time(0);
+    time_t rentTime = currentTime + (4320 * 60);
+
+    std::cout << "Car rented until " << ctime(&rentTime) << std::endl;
+}
+
+void System::carInfo(int carIndex)
+{
+    cars[carIndex].showInfo();
 }
