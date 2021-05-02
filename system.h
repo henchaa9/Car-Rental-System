@@ -18,5 +18,6 @@ class System
         void deleteCar(int index);
         void showAllCars();
         void rentCar(int carIndex, int days);
+        void endRent(int carIndex);
         void carInfo(int carIndex);
 };

@@ -27,10 +27,12 @@ void Car::setStatus(int status)
   {
     case 1:
       m_status = "Ready to go";
+      break;
     case 2:
       m_status = "Rented";
+      break;
     case 3:
       m_status = "Undergoing maintenance";
+      break;
   }
 }
-

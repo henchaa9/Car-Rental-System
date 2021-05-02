@@ -6,8 +6,7 @@
 #include "system.h"
 
 System::System() : cars(1), carCount(0)
-{
-}
+{}
 
 void System::addCar(int year, std::string make, std::string model, int km)
 {
@@ -58,7 +57,7 @@ void System::rentCar(int carIndex, int days)
     cars[carIndex].setStatus(2);
 
     time_t currentTime = time(0);
-    time_t rentTime = currentTime + (4320 * 60);
+    time_t rentTime = currentTime + ((1440 * days) * 60);
 
     std::cout << "Car rented until " << ctime(&rentTime) << std::endl;
 }
@@ -66,4 +65,10 @@ void System::rentCar(int carIndex, int days)
 void System::carInfo(int carIndex)
 {
     cars[carIndex].showInfo();
+}
+
+void System::endRent(int carIndex)
+{
+    cars[carIndex].setStatus(1);
+    std::cout << "Rent ended succesfully" << std::endl;
 }
